@@ -1,10 +1,6 @@
 package com.pluralsight.portfoliomanager;
 
-import com.pluralsight.portfoliomanager.model.Gold;
-import com.pluralsight.portfoliomanager.model.House;
-import com.pluralsight.portfoliomanager.model.Jewelry;
-import com.pluralsight.portfoliomanager.model.BankAccount;
-import com.pluralsight.portfoliomanager.model.Valuable;
+import com.pluralsight.portfoliomanager.model.*;
 
 import java.math.BigDecimal;
 
@@ -23,5 +19,17 @@ public class FinanceApplication {
         Valuable account2 = new BankAccount(456, "Gary", new BigDecimal("1500"));
         account1.deposit(new BigDecimal("100"));
         //account2.deposit(new BigDecimal("100"));
+
+        CreditCard card = new CreditCard(789, "Pam", new BigDecimal("1800"));
+
+        Portfolio portfolio = new Portfolio("Net Worth", "Pam");
+        portfolio.add(house);
+        portfolio.add(gold);
+        portfolio.add(account1);
+        portfolio.add(card);
+
+        System.out.println("Total: $" + portfolio.getValue());
+        System.out.println("Least valuable: $" + portfolio.getLeastValuable().getValue());
+        System.out.println("Most valuable: $" + portfolio.getMostValuable().getValue());
     }
 }
